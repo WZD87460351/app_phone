@@ -1,0 +1,53 @@
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){
+	.border1px{
+		&:after{
+			transform: scaleY(.5);
+		}
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+	.border1px{
+		&:after{
+			transform: scaleY(.7);
+		}
+	}
+}
+
+@mixin bottomTriangle($color,$border){
+	position:relative;
+	&:after{
+		display:block;
+		content:"";
+		height: 0;
+		width: 0;
+		border: $border solid $color;
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+		border-right-color: transparent;
+		position: absolute;
+		right: -($border * 2);
+		bottom: 0;
+		transform-origin: bottom left;
+		transform: rotateZ(45deg);
+	}
+}
+
+.clearfix{
+	*zoom:1;
+	&:before,&:after{
+		display: table;
+		content: "";
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+.leftBar{
+	float: left;
+}
+
+.rightBar{
+	float: right;
+}
